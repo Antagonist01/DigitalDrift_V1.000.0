@@ -1,0 +1,32 @@
+{
+  "name": "blog-api-postgres",
+  "version": "4.0.0",
+  "description": "Blog — Express + EJS + Neon + Google OAuth + Local Auth + Rate Limiting",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "db:init": "node db/init.js",
+    "db:migrate": "node db/migrate.js"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.20.2",
+    "connect-pg-simple": "^9.0.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.0.2",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.4.0",
+    "express-session": "^1.18.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3",
+    "validator": "^13.12.0"
+  }
+}

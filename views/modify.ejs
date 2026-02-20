@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= heading %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles/main.css"/>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-title">← Back to Blog</a>
+      <% if (user) { %>
+        <div class="user-chip">
+          <% if (user.avatar_url) { %>
+            <img class="user-avatar" src="<%= user.avatar_url %>" alt="avatar"/>
+          <% } %>
+          <span class="user-name"><%= user.display_name %></span>
+          <a class="btn btn-logout" href="/auth/logout">Logout</a>
+        </div>
+      <% } %>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="form-card">
+      <h1 class="form-heading"><%= heading %></h1>
+
+      <form method="POST" action="<%= post ? '/posts/' + post.id : '/posts' %>" class="post-form">
+        <div class="field-group">
+          <label for="title">Title</label>
+          <input id="title" type="text" name="title"
+            placeholder="Give your post a title…"
+            value="<%= post ? post.title : '' %>" required/>
+        </div>
+        <div class="field-group">
+          <label for="content">Content</label>
+          <textarea id="content" name="content" rows="12"
+            placeholder="Write something amazing…"
+            required><%= post ? post.content : '' %></textarea>
+        </div>
+        <div class="author-note">
+          ✦ Publishing as <strong><%= user.display_name %></strong>
+        </div>
+        <button class="btn btn-submit" type="submit"><%= submit %></button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with Express · EJS · Neon · Google OAuth 🌸</p>
+  </footer>
+
+</body>
+</html>
